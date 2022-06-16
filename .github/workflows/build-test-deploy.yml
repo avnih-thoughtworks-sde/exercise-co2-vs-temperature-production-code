@@ -96,6 +96,7 @@ jobs:
           cd ${SUBDIR}
           python setup.py bdist_egg
           filename=$(ls dist)
+          echo ${filename}
           aws s3 cp dist/${filename} s3://${PROJECT_NAME}-${MODULE_NAME}/${SUBDIR}/data_ingestion-0.1-py3.egg
 
   data-transformation-test:
