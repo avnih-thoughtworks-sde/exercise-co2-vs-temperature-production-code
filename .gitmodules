@@ -1,0 +1,6 @@
+[submodule "github-runner-aws-cloudformation"]
+	path = github-runner-aws-cloudformation
+	url = git@github.com:data-derp/github-runner-aws-cloudformation.git
+[submodule "s3-bucket-aws-cloudformation"]
+	path = s3-bucket-aws-cloudformation
+	url = git@github.com:data-derp/s3-bucket-aws-cloudformation.git
