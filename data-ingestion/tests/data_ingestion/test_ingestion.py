@@ -17,6 +17,8 @@ class TestIngestion(TestPySpark):
     def setup_class(cls):
         cls.spark = cls.start_spark()
         root_dir = os.path.dirname(os.path.realpath(__file__)).split("/data-ingestion/")[0]
+        print('+++++++++  here +++++++++')
+        print(root_dir)
         cls.parameters = {
             "co2_input_path":                   f"{root_dir}/datasets/ingestion/inputs/EmissionsByCountry.csv",
             "temperatures_global_input_path":   f"{root_dir}/datasets/ingestion/inputs/GlobalTemperatures.csv",
