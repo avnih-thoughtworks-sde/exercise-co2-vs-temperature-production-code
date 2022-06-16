@@ -18,17 +18,19 @@ class Ingester:
         INVALID_CHARS = [" ", ",", ";", "\n", "\t", "=", "-", "{", "}", "(", ")"]
         UNDERSCORE_CANDIDATES = [" ", ",", ";", "\n", "\t", "=", "-"] # let's replace these with underscores
 
-        column_name = NotImplemented # TODO: Exercise (modify however necessary, no need to be a one-liner)
-        if column_name is NotImplemented:
-            raise NotImplementedError("DO YOUR HOMEWORK OR NO CHEESECAKE")
+        for und_char in UNDERSCORE_CANDIDATES:
+            if und_char in column_name:
+                column_name = column_name.replace(und_char, '_')
+        for inv_char in INVALID_CHARS:
+            if inv_char in column_name:
+                column_name = column_name.replace(inv_char, '')
         return column_name
 
     def fix_columns(self, df: DataFrame) -> DataFrame:
         """Clean up a Spark DataFrame's column names"""
         # HINT: you don't need to do use .withColumnRenamed a dozen times - one-liner solution possible ;)
-        fixed_df = NotImplemented # TODO: Exercise (modify however necessary, no need to be a one-liner)
-        if fixed_df is NotImplemented:
-            raise NotImplementedError("DO YOUR HOMEWORK OR NO BREZE")
+        newColumns = [Ingester.replace_invalid_chars(x) for x in df.columns]
+        fixed_df = df.toDF(*newColumns)
         return fixed_df
 
     def run(self) -> None:
